@@ -1,0 +1,39 @@
+.infoSectionStyles {
+  font-size: 28px;
+  letter-spacing: 1.7px;
+  line-height: 130%;
+}
+.leftSection {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  text-align: center;
+}
+
+.matCardStyles {
+  background-color: white;
+  color: #212121;
+  width: 90%;
+  height: 90%;
+}
+
+.buttonStyles {
+  background-color: #212121;
+  width: 100%;
+  margin-bottom: 3vw;
+}
+.imageStyles {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.textStyles {
+  margin-bottom: 5vw;
+}
+
+@media (max-width: 959px) {
+  .leftSection {
+    margin-top: 5vw;
+    font-size: 20px;
+  }
+}

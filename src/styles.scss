@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use "@angular/material" as mat;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.marginLeft10 {
+  margin-left: 10px;
+}
+.marginRight10 {
+  margin-right: 10px;
+}
+.marginBottom10 {
+  margin-bottom: 10px;
+}
+.marginTop10 {
+  margin-top: 10px;
+}
+
+.fullWidth {
+  width: 100%;
+}
