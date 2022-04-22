@@ -1,0 +1,20 @@
+.quizCardStyles {
+  background-color: white;
+  color: #212121;
+  margin-bottom: 5vw;
+  width: 50%;
+}
+
+.quizOptionsMarginTop {
+  margin-top: 5vw;
+}
+
+.quizButton {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 1vw;
+
+  &:hover {
+    background-color: rgb(241 245 249);
+  }
+}
