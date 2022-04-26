@@ -11,6 +11,7 @@ import { InfoSectionComponent } from './components/info-section/info-section.com
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { QuizResultsComponent } from './components/quiz-results/quiz-results.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { QuizComponent } from './components/quiz/quiz.component';
     HeaderComponent,
     InfoSectionComponent,
     QuizComponent,
+    QuizResultsComponent,
   ],
   imports: [
     BrowserModule,
