@@ -11,10 +11,15 @@
 
 .quizMargin {
   margin-left: 20px;
+  margin-top: 1.5vw;
 }
 @media (min-width: 600) {
   .quizMargin {
     margin-top: 20px;
     border: 2px solid red;
   }
+}
+
+.quizSelectedAnswer {
+  color: red;
 }

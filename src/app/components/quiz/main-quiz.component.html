@@ -1,14 +1,22 @@
-<p>This will take you thru a series of 10 Handpicked JS questions.</p>
-<div fxLayout="column" class="appQuizCardMargin">
+<div fxLayout="row" fxLayoutAlign="center center" class="appQuizCardText">
+  This will take you thru a series of 10 Handpicked JS questions.
+</div>
+<div fxLayout="column" class="appQuizCardMargin" *ngIf="showMatCard" @flyInOut>
   <app-quiz-card
-    (chosenAnswer)="addChoosenAnswer($event)"
+    (chosenAnswer)="selectAnswer($event)"
     [currentQuiz]="randomQuiz"
     fxLayout="row"
     fxLayoutAlign="center center"
+    [currentResponse]="currentResponse"
   ></app-quiz-card>
 
   <div fxLayout="row" fxLayoutAlign="center center">
-    <button mat-button routerLink="results" class="quizSubmitButton">
+    <button
+      mat-button
+      class="quizSubmitButton"
+      (click)="sendAnswer()"
+      (click)="(toggleAnimation)"
+    >
       Submit
     </button>
   </div>

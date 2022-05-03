@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Quiz, QuizInterface } from '../Quizes';
+import { Quiz, QuizInterface, QuizResponseInterface } from '../Quizes';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -7,11 +7,11 @@ import { Observable, of } from 'rxjs';
 })
 export class QuizService {
   Quizes$: QuizInterface[] = [];
+  randomId: number = Math.floor(Math.random() * Quiz.length);
+  AllAnswers: QuizResponseInterface[] = [];
+  isgood!: boolean;
 
   constructor() {}
-
-  //wil need to find a way to get  all the objects and get the max amount of questions
-  randomId = Math.floor(Math.random() * 10) + 1;
 
   getQuizes(): Observable<QuizInterface[]> {
     const Quizes$ = of(Quiz);
@@ -19,10 +19,19 @@ export class QuizService {
   }
 
   getRandomQuiz(): Observable<QuizInterface> {
-    //get all the ids and then choose one randomly
-
     const randomQuiz = of(Quiz[this.randomId]);
     return randomQuiz;
+  }
+  sendCurrentAnswer(currentAnswer: QuizResponseInterface): void {
+    //little check, needs to be true always.
+    this.isgood = this.AllAnswers.every(
+      (response) => response.id !== currentAnswer.id
+    );
+
+    this.AllAnswers.push(currentAnswer);
+    //we want to not have more than 1 entry with the same ID
+    console.log(this.AllAnswers);
+    console.log(this.isgood);
   }
   //getspecific Quiz
 }

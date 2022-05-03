@@ -9,8 +9,7 @@ import { QuizInterface, QuizResponseInterface } from 'src/app/Quizes';
 export class QuizCardComponent implements OnInit {
   @Input() currentQuiz!: QuizInterface;
   @Output() chosenAnswer = new EventEmitter<QuizResponseInterface>();
-  //output decorator to send data back to the mainquiz
-  //Either here or in the main component, we'll have an animation
+  @Input() currentResponse!: QuizResponseInterface;
 
   constructor() {}
 
@@ -18,7 +17,5 @@ export class QuizCardComponent implements OnInit {
     this.chosenAnswer.emit({ id, choosenAnswer });
   }
 
-  ngOnInit(): void {
-    console.log(this.currentQuiz);
-  }
+  ngOnInit(): void {}
 }
