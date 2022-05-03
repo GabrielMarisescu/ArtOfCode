@@ -5,6 +5,11 @@ export interface QuizInterface {
   answer: string;
 }
 
+export interface QuizResponseInterface {
+  id: number;
+  choosenAnswer: string;
+}
+
 export const Quiz: QuizInterface[] = [
   {
     id: 1,

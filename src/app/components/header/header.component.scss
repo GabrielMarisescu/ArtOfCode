@@ -5,7 +5,7 @@
 }
 
 .toolBarStyles {
-  margin-bottom: 7vw;
+  margin-bottom: 50px;
   height: 10vw;
 }
 
@@ -17,4 +17,22 @@
   height: 90%;
   object-fit: contain;
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .toolBarStyles {
+    height: 12vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .toolBarStyles {
+    height: 15vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .toolBarStyles {
+    height: 25vw;
+  }
 }

@@ -1,0 +1,20 @@
+.quizQuestionStyles {
+  margin-top: 20px !important;
+  margin-bottom: 5vw;
+  font-size: 32px;
+}
+.quizQuestionsOptions {
+  background-color: #212121;
+  color: white;
+  width: 120px;
+}
+
+.quizMargin {
+  margin-left: 20px;
+}
+@media (min-width: 600) {
+  .quizMargin {
+    margin-top: 20px;
+    border: 2px solid red;
+  }
+}

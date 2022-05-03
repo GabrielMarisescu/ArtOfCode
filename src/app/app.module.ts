@@ -10,8 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { InfoSectionComponent } from './components/info-section/info-section.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { QuizComponent } from './components/quiz/quiz.component';
+import { QuizComponent } from './components/quiz/main-quiz.component';
 import { QuizResultsComponent } from './components/quiz-results/quiz-results.component';
+import { QuizCardComponent } from './components/quiz-card/quiz-card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { QuizResultsComponent } from './components/quiz-results/quiz-results.com
     InfoSectionComponent,
     QuizComponent,
     QuizResultsComponent,
+    QuizCardComponent,
   ],
   imports: [
     BrowserModule,

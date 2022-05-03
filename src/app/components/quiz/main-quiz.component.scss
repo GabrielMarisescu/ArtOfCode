@@ -1,12 +1,7 @@
 .quizCardStyles {
   background-color: white;
   color: #212121;
-  margin-bottom: 5vw;
   width: 50%;
-}
-
-.quizOptionsMarginTop {
-  margin-top: 5vw;
 }
 
 .quizButton {
@@ -20,8 +15,12 @@
 }
 
 .quizSubmitButton {
-  border: 2px solid #212121;
+  background-color: #212121;
   width: 50%;
-  height: 50%;
-  margin-bottom: 3vw;
+  margin-top: 45px;
+  color: white;
+}
+
+.appQuizCardMargin {
+  margin-top: 30px;
 }

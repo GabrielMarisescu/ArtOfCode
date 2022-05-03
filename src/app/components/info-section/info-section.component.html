@@ -1,11 +1,11 @@
 <div
-  fxLayout="col"
   class="infoSectionStyles"
   fxLayoutAlign.lt-md="center center"
   fxLayout.lt-md="column"
   fxLayout.gt-lg="row"
 >
-  <div class="leftSection" fxFlex="40%">
+  <div class="textSection" fxFlex fxLayout="column">
+    <p class="textStyles">Hello and welcome to my personal project.</p>
     <p class="textStyles">
       Art of Code is a quiz service which tests your JavaScript Knowledge!
     </p>
@@ -14,14 +14,14 @@
       Test your JavaScript knowledge with over
       <span style="font-weight: bold">100</span> questions tailored for you!
     </p>
-    <div fxLayoutAlign="center center" class="fullWidth">
+    <div fxLayoutAlign="center center">
       <button mat-raised-button routerLink="quiz" class="buttonStyles">
         Start
       </button>
     </div>
   </div>
 
-  <div fxFlex="60%" fxLayout="row" fxLayoutAlign="center">
+  <div fxFlex fxLayout="row" fxLayoutAlign="center">
     <mat-card class="matCardStyles" fxLayoutAlign="center center">
       <img src="assets/CodeImage.png" class="imageStyles" />
     </mat-card>

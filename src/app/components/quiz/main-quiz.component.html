@@ -1,0 +1,15 @@
+<p>This will take you thru a series of 10 Handpicked JS questions.</p>
+<div fxLayout="column" class="appQuizCardMargin">
+  <app-quiz-card
+    (chosenAnswer)="addChoosenAnswer($event)"
+    [currentQuiz]="randomQuiz"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+  ></app-quiz-card>
+
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button mat-button routerLink="results" class="quizSubmitButton">
+      Submit
+    </button>
+  </div>
+</div>
