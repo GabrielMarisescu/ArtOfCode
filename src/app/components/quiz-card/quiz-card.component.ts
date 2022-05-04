@@ -7,9 +7,9 @@ import { QuizInterface, QuizResponseInterface } from 'src/app/Quizes';
   styleUrls: ['./quiz-card.component.scss'],
 })
 export class QuizCardComponent implements OnInit {
-  @Input() currentQuiz!: QuizInterface;
+  @Input() currentQuiz!: QuizInterface | null;
   @Output() chosenAnswer = new EventEmitter<QuizResponseInterface>();
-  @Input() currentResponse!: QuizResponseInterface;
+  @Input() currentResponse!: QuizResponseInterface | null;
 
   constructor() {}
 

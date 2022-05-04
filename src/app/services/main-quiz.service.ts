@@ -22,6 +22,7 @@ export class QuizService {
     const randomQuiz = of(Quiz[this.randomId]);
     return randomQuiz;
   }
+
   sendCurrentAnswer(currentAnswer: QuizResponseInterface): void {
     //little check, needs to be true always.
     this.isgood = this.AllAnswers.every(
