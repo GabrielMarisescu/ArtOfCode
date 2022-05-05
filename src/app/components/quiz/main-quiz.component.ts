@@ -1,5 +1,6 @@
 import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { appear } from 'src/app/animations/main/main.component';
 import { QuizInterface, QuizResponseInterface } from 'src/app/Quizes';
 import { QuizService } from 'src/app/services/main-quiz.service';
@@ -24,15 +25,12 @@ export class QuizComponent implements OnInit {
     if (this.currentResponse) {
       this.Quiz.sendCurrentAnswer(this.currentResponse);
       this.currentResponse = null;
-      this.randomQuiz = null;
-
-      this.Quiz.getRandomQuiz().subscribe((quiz) => (this.randomQuiz = quiz));
     }
   }
 
   ngOnInit(): void {
     this.Quiz.getRandomQuiz().subscribe((quiz) => (this.randomQuiz = quiz));
   }
-
-  //service which will tell us the number of avaiable quizes to show.
 }
+
+//service which will tell us the number of avaiable quizes to show.
