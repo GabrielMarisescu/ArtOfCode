@@ -8,13 +8,14 @@ import { QuizInterface, QuizResponseInterface } from 'src/app/Quizes';
 })
 export class QuizCardComponent implements OnInit {
   @Input() currentQuiz!: QuizInterface | null;
-  @Output() chosenAnswer = new EventEmitter<QuizResponseInterface>();
   @Input() currentResponse!: QuizResponseInterface | null;
 
-  constructor() {}
+  @Output() chosenAnswer = new EventEmitter<QuizResponseInterface>();
+  answer: any;
 
-  sendChoosenAnswer(id: number, choosenAnswer: string) {
-    this.chosenAnswer.emit({ id, choosenAnswer });
+  sendChoosenAnswer(choosenAnswer: string) {
+    this.answer = { id: this.currentQuiz?.id, choosenAnswer };
+    this.chosenAnswer.emit(this.answer);
   }
 
   ngOnInit(): void {}

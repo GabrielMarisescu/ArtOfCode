@@ -1,8 +1,8 @@
-import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { switchMap } from 'rxjs';
-import { appear } from 'src/app/animations/main/main.component';
-import { QuizInterface, QuizResponseInterface } from 'src/app/Quizes';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject, switchMap } from 'rxjs';
+import { appear } from 'src/app/animations/main/common.animations';
+import { QuizResponseInterface } from 'src/app/Quizes';
 import { QuizService } from 'src/app/services/main-quiz.service';
 
 @Component({
@@ -12,9 +12,14 @@ import { QuizService } from 'src/app/services/main-quiz.service';
   animations: [appear],
 })
 export class QuizComponent implements OnInit {
-  constructor(private Quiz: QuizService) {}
-
-  randomQuiz: QuizInterface | null = null;
+  constructor(private quiz: QuizService, private readonly router: Router) {}
+  questionQueueNumber = new BehaviorSubject(0);
+  questionQueueNumber$ = this.questionQueueNumber.asObservable();
+  quiz$ = this.questionQueueNumber$.pipe(
+    switchMap((num) => {
+      return this.quiz.getRandomQuiz();
+    })
+  );
   currentResponse: QuizResponseInterface | null = null;
 
   selectAnswer(answer: QuizResponseInterface) {
@@ -23,14 +28,19 @@ export class QuizComponent implements OnInit {
 
   sendAnswer() {
     if (this.currentResponse) {
-      this.Quiz.sendCurrentAnswer(this.currentResponse);
+      this.quiz.sendCurrentAnswer(this.currentResponse);
       this.currentResponse = null;
+      this.questionQueueNumber.next(this.questionQueueNumber.value + 1);
+      //
+      if (this.questionQueueNumber.value === 10) {
+        if (this.quiz.checkCompleteness()) {
+          this.router.navigate(['/quiz/results']);
+        }
+      }
     }
   }
 
-  ngOnInit(): void {
-    this.Quiz.getRandomQuiz().subscribe((quiz) => (this.randomQuiz = quiz));
-  }
-}
+  ngOnInit(): void {}
 
-//service which will tell us the number of avaiable quizes to show.
+  //service which will tell us the number of avaiable quizes to show.
+}

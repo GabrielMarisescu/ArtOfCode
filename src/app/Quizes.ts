@@ -10,7 +10,7 @@ export interface QuizResponseInterface {
   choosenAnswer: string;
 }
 
-export const Quiz: QuizInterface[] = [
+export const quizMock: QuizInterface[] = [
   {
     id: 1,
     question: 'true + false',

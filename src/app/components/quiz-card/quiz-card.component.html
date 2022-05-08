@@ -13,11 +13,11 @@
       <button
         mat-button
         [ngClass]="
-          currentResponse?.choosenAnswer === option
+          answer?.choosenAnswer === option
             ? 'quizQuestionsOptions quizSelectedAnswer '
             : 'quizQuestionsOptions'
         "
-        (click)="sendChoosenAnswer(currentQuiz!.id, option)"
+        (click)="sendChoosenAnswer(option)"
       >
         {{ option }}
       </button>

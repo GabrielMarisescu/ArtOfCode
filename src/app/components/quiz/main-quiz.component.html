@@ -4,7 +4,7 @@
 <div fxLayout="column" class="appQuizCardMargin" @appear>
   <app-quiz-card
     (chosenAnswer)="selectAnswer($event)"
-    [currentQuiz]="randomQuiz"
+    [currentQuiz]="quiz$ | async"
     fxLayout="row"
     fxLayoutAlign="center center"
     [currentResponse]="currentResponse"
