@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { QuizComponent } from './components/quiz/main-quiz.component';
 import { QuizResultsComponent } from './components/quiz-results/quiz-results.component';
 import { QuizCardComponent } from './components/quiz-card/quiz-card.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { QuizCardComponent } from './components/quiz-card/quiz-card.component';
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

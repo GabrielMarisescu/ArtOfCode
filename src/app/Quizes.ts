@@ -1,16 +1,6 @@
-export interface QuizInterface {
-  id: number;
-  question: string;
-  options: string[];
-  answer: string;
-}
+import { Quiz } from './interfaces/quiz-interfaces';
 
-export interface QuizResponseInterface {
-  id: number;
-  choosenAnswer: string;
-}
-
-export const quizMock: QuizInterface[] = [
+export const quizMock: Quiz[] = [
   {
     id: 1,
     question: 'true + false',

@@ -1,31 +1,40 @@
 import { Injectable } from '@angular/core';
-import { quizMock, QuizInterface, QuizResponseInterface } from '../Quizes';
+import { quizMock } from '../Quizes';
 import { Observable, of } from 'rxjs';
+import { Quiz, QuizResponse, QuizResults } from '../interfaces/quiz-interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuizService {
-  Quizes$: QuizInterface[] = [];
-  AllAnswers: QuizResponseInterface[] = [];
+  Quizes$: Quiz[] = [];
+  AllAnswers: QuizResponse[] = [];
+  finalTableData: QuizResults[] | {} = {};
 
   constructor() {}
 
-  getQuizes(): Observable<QuizInterface[]> {
+  getQuizes(): Observable<Quiz[]> {
     const Quizes$ = of(quizMock);
     return Quizes$;
   }
 
-  getRandomQuiz(): Observable<QuizInterface> {
-    const randomQuiz = of(
+  getRandomQuiz(): Observable<Quiz> {
+    const randomQuiz$ = of(
       quizMock[Math.floor(Math.random() * quizMock.length)]
     );
-    return randomQuiz;
+    return randomQuiz$;
   }
 
-  sendCurrentAnswer(currentAnswer: QuizResponseInterface): void {
+  //Todo final quiz
+  //getQuizTableDataFinal(): Observable<QuizResults[]> {
+
+  // return of()
+  //}
+
+  sendCurrentAnswer(currentAnswer: QuizResponse): void {
     this.AllAnswers.push(currentAnswer);
     this.checkCompleteness();
+    console.log(this.AllAnswers);
   }
   checkCompleteness() {
     // big brain xD

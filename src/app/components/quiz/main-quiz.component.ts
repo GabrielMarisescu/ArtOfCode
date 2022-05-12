@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { appear } from 'src/app/animations/main/common.animations';
-import { QuizResponseInterface } from 'src/app/Quizes';
+import { QuizResponse } from 'src/app/interfaces/quiz-interfaces';
+
 import { QuizService } from 'src/app/services/main-quiz.service';
 
 @Component({
@@ -20,9 +21,9 @@ export class QuizComponent implements OnInit {
       return this.quiz.getRandomQuiz();
     })
   );
-  currentResponse: QuizResponseInterface | null = null;
+  currentResponse: QuizResponse | null = null;
 
-  selectAnswer(answer: QuizResponseInterface) {
+  selectAnswer(answer: QuizResponse) {
     this.currentResponse = answer;
   }
 
@@ -31,11 +32,8 @@ export class QuizComponent implements OnInit {
       this.quiz.sendCurrentAnswer(this.currentResponse);
       this.currentResponse = null;
       this.questionQueueNumber.next(this.questionQueueNumber.value + 1);
-      //
       if (this.questionQueueNumber.value === 10) {
-        if (this.quiz.checkCompleteness()) {
-          this.router.navigate(['/quiz/results']);
-        }
+        this.router.navigate(['/quiz/results']);
       }
     }
   }

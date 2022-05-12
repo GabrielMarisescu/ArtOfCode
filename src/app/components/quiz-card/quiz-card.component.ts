@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { QuizInterface, QuizResponseInterface } from 'src/app/Quizes';
+import { Quiz, QuizResponse } from 'src/app/interfaces/quiz-interfaces';
 
 @Component({
   selector: 'app-quiz-card',
@@ -7,10 +7,10 @@ import { QuizInterface, QuizResponseInterface } from 'src/app/Quizes';
   styleUrls: ['./quiz-card.component.scss'],
 })
 export class QuizCardComponent implements OnInit {
-  @Input() currentQuiz!: QuizInterface | null;
-  @Input() currentResponse!: QuizResponseInterface | null;
+  @Input() currentQuiz!: Quiz | null;
+  @Input() currentResponse!: QuizResponse | null;
 
-  @Output() chosenAnswer = new EventEmitter<QuizResponseInterface>();
+  @Output() chosenAnswer = new EventEmitter<QuizResponse>();
   answer: any;
 
   sendChoosenAnswer(choosenAnswer: string) {
