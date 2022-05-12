@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizResults } from 'src/app/interfaces/quiz-interfaces';
+import { QuizService } from 'src/app/services/main-quiz.service';
 
 @Component({
   selector: 'app-quiz-results',
@@ -7,26 +8,12 @@ import { QuizResults } from 'src/app/interfaces/quiz-interfaces';
   styleUrls: ['./quiz-results.component.scss'],
 })
 export class QuizResultsComponent implements OnInit {
-  constructor() {}
-  ngOnInit(): void {}
+  constructor(private readonly quiz: QuizService) {}
 
-  //set this dynamically
-
-  //subscribe to the service and get the data "Subject" or AsyncSubject
-  quizResults: QuizResults[] = [
-    {
-      id: 1,
-      question: 'thisthisthis',
-      choosenAnswer: 'test',
-      correctAnswer: 'test',
-    },
-    {
-      id: 2,
-      question: 'thisthisthis',
-      choosenAnswer: 'test',
-      correctAnswer: 'test',
-    },
-  ];
+  dataSource: any;
+  ngOnInit(): void {
+    this.dataSource = this.quiz.getQuizTableDataFinal();
+  }
 
   //will add icons x for bad, check for good
   displayedColumns: string[] = [
@@ -36,5 +23,4 @@ export class QuizResultsComponent implements OnInit {
     'correctAnswer',
     'result',
   ];
-  dataSource = this.quizResults;
 }

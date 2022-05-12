@@ -9,7 +9,8 @@ import { Quiz, QuizResponse, QuizResults } from '../interfaces/quiz-interfaces';
 export class QuizService {
   Quizes$: Quiz[] = [];
   AllAnswers: QuizResponse[] = [];
-  finalTableData: QuizResults[] | {} = {};
+  // finalTableData: QuizResults[] = [];
+  finalTableData: any = of();
 
   constructor() {}
 
@@ -26,10 +27,27 @@ export class QuizService {
   }
 
   //Todo final quiz
-  //getQuizTableDataFinal(): Observable<QuizResults[]> {
+  // take 1 quizResponse, modify the object and then put the object in
+  //a different array,
+  //everytime the user clicks, i push a value to the array, and I can
 
-  // return of()
-  //}
+  getQuizTableDataFinal(): any {
+    //id,choosen Answer //loop thru the object
+    this.finalTableData = of(
+      this.AllAnswers.map((obj) => {
+        return {
+          id: obj.id,
+          question: quizMock[obj.id - 1].question,
+          choosenAnswer: obj.choosenAnswer,
+          correctAnswer: quizMock[obj.id - 1].answer,
+        };
+      })
+    );
+    console.log(this.finalTableData);
+    return this.finalTableData;
+  }
+
+  // GET rid of the quizes that were already shown , never return them again
 
   sendCurrentAnswer(currentAnswer: QuizResponse): void {
     this.AllAnswers.push(currentAnswer);
