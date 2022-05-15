@@ -12,11 +12,8 @@
     <div *ngFor="let option of currentQuiz!.options" class="quizMargin">
       <button
         mat-button
-        [ngClass]="
-          answer?.choosenAnswer === option
-            ? 'quizQuestionsOptions quizSelectedAnswer '
-            : 'quizQuestionsOptions'
-        "
+        class="quizQuestionsOptions"
+        [ngClass]="highlightedAnswer(option)"
         (click)="sendChoosenAnswer(option)"
       >
         {{ option }}

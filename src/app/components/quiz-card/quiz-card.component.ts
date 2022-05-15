@@ -11,6 +11,7 @@ export class QuizCardComponent implements OnInit {
   @Input() currentResponse!: QuizResponse | null;
 
   @Output() chosenAnswer = new EventEmitter<QuizResponse>();
+
   answer: any;
 
   sendChoosenAnswer(choosenAnswer: string) {
@@ -18,5 +19,11 @@ export class QuizCardComponent implements OnInit {
     this.chosenAnswer.emit(this.answer);
   }
 
+  highlightedAnswer(currentlySelectedOption: string) {
+    return {
+      quizSelectedAnswer:
+        currentlySelectedOption === this.currentResponse?.choosenAnswer,
+    };
+  }
   ngOnInit(): void {}
 }

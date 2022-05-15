@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuizService } from 'src/app/services/main-quiz.service';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly quiz: QuizService) {}
 
+  clearCurrentQuizinstance() {
+    this.quiz.clearQuizArray();
+  }
   ngOnInit(): void {}
 }

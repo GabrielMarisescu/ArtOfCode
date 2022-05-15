@@ -14,6 +14,7 @@ import { QuizService } from 'src/app/services/main-quiz.service';
 })
 export class QuizComponent implements OnInit {
   constructor(private quiz: QuizService, private readonly router: Router) {}
+
   questionQueueNumber = new BehaviorSubject(0);
   questionQueueNumber$ = this.questionQueueNumber.asObservable();
   quiz$ = this.questionQueueNumber$.pipe(
@@ -25,6 +26,7 @@ export class QuizComponent implements OnInit {
 
   selectAnswer(answer: QuizResponse) {
     this.currentResponse = answer;
+    console.log(this.currentResponse, answer);
   }
 
   sendAnswer() {
@@ -32,6 +34,7 @@ export class QuizComponent implements OnInit {
       this.quiz.sendCurrentAnswer(this.currentResponse);
       this.currentResponse = null;
       this.questionQueueNumber.next(this.questionQueueNumber.value + 1);
+
       if (this.questionQueueNumber.value === 10) {
         this.router.navigate(['/quiz/results']);
       }

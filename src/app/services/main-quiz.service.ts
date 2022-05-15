@@ -26,6 +26,10 @@ export class QuizService {
     return randomQuiz$;
   }
 
+  clearQuizArray(): void {
+    this.AllAnswers = [];
+  }
+
   //Todo final quiz
   // take 1 quizResponse, modify the object and then put the object in
   //a different array,
@@ -43,7 +47,6 @@ export class QuizService {
         };
       })
     );
-    console.log(this.finalTableData);
     return this.finalTableData;
   }
 
