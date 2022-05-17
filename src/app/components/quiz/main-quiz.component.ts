@@ -3,11 +3,10 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { appear } from 'src/app/animations/main/common.animations';
 import { QuizResponse } from 'src/app/interfaces/quiz-interfaces';
-
 import { QuizService } from 'src/app/services/main-quiz.service';
 
 @Component({
-  selector: 'app-main-quiz.',
+  selector: 'app-main-quiz',
   templateUrl: './main-quiz.component.html',
   styleUrls: ['./main-quiz.component.scss'],
   animations: [appear],
@@ -26,7 +25,6 @@ export class QuizComponent implements OnInit {
 
   selectAnswer(answer: QuizResponse) {
     this.currentResponse = answer;
-    console.log(this.currentResponse, answer);
   }
 
   sendAnswer() {
@@ -34,6 +32,8 @@ export class QuizComponent implements OnInit {
       this.quiz.sendCurrentAnswer(this.currentResponse);
       this.currentResponse = null;
       this.questionQueueNumber.next(this.questionQueueNumber.value + 1);
+
+      console.log(appear);
 
       if (this.questionQueueNumber.value === 10) {
         this.router.navigate(['/quiz/results']);

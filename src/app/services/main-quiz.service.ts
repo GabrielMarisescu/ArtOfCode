@@ -9,8 +9,7 @@ import { Quiz, QuizResponse, QuizResults } from '../interfaces/quiz-interfaces';
 export class QuizService {
   Quizes$: Quiz[] = [];
   AllAnswers: QuizResponse[] = [];
-  // finalTableData: QuizResults[] = [];
-  finalTableData: any = of();
+  finalTableData: Observable<QuizResults[]> = of();
 
   constructor() {}
 
@@ -26,17 +25,7 @@ export class QuizService {
     return randomQuiz$;
   }
 
-  clearQuizArray(): void {
-    this.AllAnswers = [];
-  }
-
-  //Todo final quiz
-  // take 1 quizResponse, modify the object and then put the object in
-  //a different array,
-  //everytime the user clicks, i push a value to the array, and I can
-
-  getQuizTableDataFinal(): any {
-    //id,choosen Answer //loop thru the object
+  getQuizTableDataFinal(): Observable<QuizResults[]> {
     this.finalTableData = of(
       this.AllAnswers.map((obj) => {
         return {
@@ -44,10 +33,14 @@ export class QuizService {
           question: quizMock[obj.id - 1].question,
           choosenAnswer: obj.choosenAnswer,
           correctAnswer: quizMock[obj.id - 1].answer,
+          result: quizMock[obj.id - 1].answer === obj.choosenAnswer,
         };
       })
     );
     return this.finalTableData;
+  }
+  clearQuizArray(): void {
+    this.AllAnswers = [];
   }
 
   // GET rid of the quizes that were already shown , never return them again
@@ -55,15 +48,14 @@ export class QuizService {
   sendCurrentAnswer(currentAnswer: QuizResponse): void {
     this.AllAnswers.push(currentAnswer);
     this.checkCompleteness();
-    console.log(this.AllAnswers);
   }
+
   checkCompleteness() {
     // big brain xD
     const correctness = this.AllAnswers.map(
       ({ id, choosenAnswer }) =>
         quizMock.find((quiz) => quiz.id === id)?.answer === choosenAnswer
     );
-    console.log(correctness);
     return correctness.every(Boolean);
   }
 }

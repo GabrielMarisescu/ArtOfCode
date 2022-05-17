@@ -27,7 +27,8 @@
     <ng-container matColumnDef="result">
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let element">
-        {{ element.symbol }} X or check
+        <mat-icon *ngIf="element.result">check</mat-icon>
+        <mat-icon *ngIf="!element.result">clear</mat-icon>
       </td>
     </ng-container>
 
