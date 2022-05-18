@@ -7,22 +7,19 @@ import { Quiz, QuizResponse, QuizResults } from '../interfaces/quiz-interfaces';
   providedIn: 'root',
 })
 export class QuizService {
-  Quizes$: Quiz[] = [];
   AllAnswers: QuizResponse[] = [];
   finalTableData: Observable<QuizResults[]> = of();
-
   constructor() {}
-
-  getQuizes(): Observable<Quiz[]> {
-    const Quizes$ = of(quizMock);
-    return Quizes$;
-  }
 
   getRandomQuiz(): Observable<Quiz> {
     const randomQuiz$ = of(
       quizMock[Math.floor(Math.random() * quizMock.length)]
     );
     return randomQuiz$;
+  }
+
+  removeQuizFromArray(idOfQuiz: number): void {
+    //
   }
 
   getQuizTableDataFinal(): Observable<QuizResults[]> {

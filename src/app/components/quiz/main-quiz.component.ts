@@ -31,9 +31,9 @@ export class QuizComponent implements OnInit {
     if (this.currentResponse) {
       this.quiz.sendCurrentAnswer(this.currentResponse);
       this.currentResponse = null;
+      //next Quiz
       this.questionQueueNumber.next(this.questionQueueNumber.value + 1);
-
-      console.log(appear);
+      //Remove the sent quiz from
 
       if (this.questionQueueNumber.value === 10) {
         this.router.navigate(['/quiz/results']);
