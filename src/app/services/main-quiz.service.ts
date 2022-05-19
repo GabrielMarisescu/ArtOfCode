@@ -16,7 +16,6 @@ export class QuizService {
   getRandomQuiz(): Observable<Quiz> {
     const index = Math.floor(Math.random() * this.quizArray.length);
     const item = this.quizArray[index];
-    console.log(this.quizArray);
     return of(item);
   }
 
