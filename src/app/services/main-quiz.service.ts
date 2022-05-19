@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { quizMock } from '../Quizes';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { Quiz, QuizResponse, QuizResults } from '../interfaces/quiz-interfaces';
 
 @Injectable({
@@ -9,31 +9,14 @@ import { Quiz, QuizResponse, QuizResults } from '../interfaces/quiz-interfaces';
 export class QuizService {
   AllAnswers: QuizResponse[] = [];
   finalTableData$: Observable<QuizResults[]> = of();
-  quizArray: Quiz[];
-  flag: boolean = false;
+  quizArray: Quiz[] = quizMock;
 
   constructor() {}
 
   getRandomQuiz(): Observable<Quiz> {
-    this.quizArray = quizMock;
-    const index: number = Math.floor(Math.random() * quizMock.length);
+    const index = Math.floor(Math.random() * quizMock.length);
     const item = this.quizArray[index];
-
-    if (this.flag) {
-      this.quizArray.splice(index, 1);
-    }
-
-    console.log(this.AllAnswers);
-    this.flag = true;
     return of(item);
-  }
-
-  getRandomQuiz2(): Observable<Quiz> {
-    const randomQuiz$ = of(
-      quizMock[Math.floor(Math.random() * quizMock.length)]
-    );
-    console.log(this.AllAnswers);
-    return randomQuiz$;
   }
 
   getQuizTableDataFinal(): Observable<QuizResults[]> {
@@ -54,11 +37,8 @@ export class QuizService {
     this.AllAnswers = [];
   }
 
-  // GET rid of the quizes that were already shown , never return them again
-
   sendCurrentAnswer(currentAnswer: QuizResponse): void {
     this.AllAnswers.push(currentAnswer);
-    console.log(currentAnswer);
     this.checkCompleteness();
   }
 
