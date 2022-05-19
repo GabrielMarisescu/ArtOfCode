@@ -15,7 +15,7 @@ export class QuizCardComponent implements OnInit {
   answer: any;
 
   sendChoosenAnswer(choosenAnswer: string) {
-    this.answer = { id: this.currentQuiz?.id, choosenAnswer };
+    this.answer = { id: this.currentQuiz.id, choosenAnswer };
     this.chosenAnswer.emit(this.answer);
   }
 

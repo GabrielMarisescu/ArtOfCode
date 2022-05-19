@@ -14,8 +14,9 @@ export class QuizService {
   constructor() {}
 
   getRandomQuiz(): Observable<Quiz> {
-    const index = Math.floor(Math.random() * quizMock.length);
+    const index = Math.floor(Math.random() * this.quizArray.length);
     const item = this.quizArray[index];
+    console.log(this.quizArray);
     return of(item);
   }
 
@@ -39,6 +40,10 @@ export class QuizService {
 
   sendCurrentAnswer(currentAnswer: QuizResponse): void {
     this.AllAnswers.push(currentAnswer);
+    this.quizArray = this.quizArray.filter((el) => {
+      el.id !== currentAnswer.id;
+    });
+
     this.checkCompleteness();
   }
 
