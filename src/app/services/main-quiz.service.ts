@@ -41,7 +41,7 @@ export class QuizService {
   sendCurrentAnswer(currentAnswer: QuizResponse): void {
     this.AllAnswers.push(currentAnswer);
     this.quizArray = this.quizArray.filter((el) => {
-      el.id !== currentAnswer.id;
+      return el.id !== currentAnswer.id;
     });
 
     this.checkCompleteness();
