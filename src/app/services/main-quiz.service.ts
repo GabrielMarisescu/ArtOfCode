@@ -8,22 +8,36 @@ import { Quiz, QuizResponse, QuizResults } from '../interfaces/quiz-interfaces';
 })
 export class QuizService {
   AllAnswers: QuizResponse[] = [];
-  finalTableData: Observable<QuizResults[]> = of();
+  finalTableData$: Observable<QuizResults[]> = of();
+  quizArray: Quiz[];
+  flag: boolean = false;
+
   constructor() {}
 
   getRandomQuiz(): Observable<Quiz> {
+    this.quizArray = quizMock;
+    const index: number = Math.floor(Math.random() * quizMock.length);
+    const item = this.quizArray[index];
+
+    if (this.flag) {
+      this.quizArray.splice(index, 1);
+    }
+
+    console.log(this.AllAnswers);
+    this.flag = true;
+    return of(item);
+  }
+
+  getRandomQuiz2(): Observable<Quiz> {
     const randomQuiz$ = of(
       quizMock[Math.floor(Math.random() * quizMock.length)]
     );
+    console.log(this.AllAnswers);
     return randomQuiz$;
   }
 
-  removeQuizFromArray(idOfQuiz: number): void {
-    //
-  }
-
   getQuizTableDataFinal(): Observable<QuizResults[]> {
-    this.finalTableData = of(
+    this.finalTableData$ = of(
       this.AllAnswers.map((obj) => {
         return {
           id: obj.id,
@@ -34,7 +48,7 @@ export class QuizService {
         };
       })
     );
-    return this.finalTableData;
+    return this.finalTableData$;
   }
   clearQuizArray(): void {
     this.AllAnswers = [];
@@ -44,6 +58,7 @@ export class QuizService {
 
   sendCurrentAnswer(currentAnswer: QuizResponse): void {
     this.AllAnswers.push(currentAnswer);
+    console.log(currentAnswer);
     this.checkCompleteness();
   }
 

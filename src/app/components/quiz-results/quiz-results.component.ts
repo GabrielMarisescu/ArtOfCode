@@ -14,8 +14,6 @@ export class QuizResultsComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource = this.quiz.getQuizTableDataFinal();
   }
-
-  //will add icons x for bad, check for good
   displayedColumns: string[] = [
     'id',
     'question',
