@@ -34,7 +34,7 @@ export class QuizService {
     return this.finalTableData$;
   }
   clearQuizArray(): void {
-    this.AllAnswers = [];
+    this.quizArray = quizMock;
   }
 
   sendCurrentAnswer(currentAnswer: QuizResponse): void {
