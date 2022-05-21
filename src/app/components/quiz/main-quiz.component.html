@@ -1,4 +1,9 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="appQuizCardText">
+<div
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  class="appQuizCardText"
+  lang="en"
+>
   This will take you thru a series of 10 Handpicked JS questions.
 </div>
 <div fxLayout="column" class="appQuizCardMargin" @appear>
@@ -11,7 +16,13 @@
   ></app-quiz-card>
 
   <div fxLayout="row" fxLayoutAlign="center center">
-    <button mat-button class="quizSubmitButton" (click)="sendAnswer()">
+    <button
+      mat-button
+      class="quizSubmitButton"
+      (click)="sendAnswer()"
+      lang="en"
+      aria-label="Submit Your Answer Button"
+    >
       Submit
     </button>
   </div>

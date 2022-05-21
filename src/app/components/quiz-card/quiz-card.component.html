@@ -1,5 +1,11 @@
 <mat-card class="matCardStyles">
-  <p class="quizQuestionStyles" fxLayout="row" fxLayoutAlign="center center">
+  <p
+    class="quizQuestionStyles"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    lang="en"
+    aria-label="Current Quiz Question"
+  >
     {{ currentQuiz.question }} ?
   </p>
   <div
@@ -15,6 +21,8 @@
         class="quizQuestionsOptions"
         [ngClass]="highlightedAnswer(option)"
         (click)="sendChoosenAnswer(option)"
+        lang="en"
+        aria-label="Choose this option Button"
       >
         {{ option }}
       </button>

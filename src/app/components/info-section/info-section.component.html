@@ -15,7 +15,13 @@
       <span style="font-weight: bold">100</span> questions tailored for you!
     </p>
     <div fxLayoutAlign="center center">
-      <button mat-raised-button routerLink="quiz" class="buttonStyles">
+      <button
+        mat-raised-button
+        routerLink="quiz"
+        class="buttonStyles"
+        aria-label="Start Quiz Button"
+        lang="en"
+      >
         Start
       </button>
     </div>
@@ -23,7 +29,11 @@
 
   <div fxFlex fxLayout="row" fxLayoutAlign="center">
     <mat-card class="matCardStyles" fxLayoutAlign="center center">
-      <img src="assets/CodeImage.png" class="imageStyles" />
+      <img
+        src="assets/CodeImage.png"
+        class="imageStyles"
+        aria-label="Code Image"
+      />
     </mat-card>
   </div>
 </div>
