@@ -3,10 +3,11 @@
 The Art Of Code allows you to test your JS knowledge through a series of quizes.
 
 - The Art of Code will take you through a series of quizes.
-- Actively maintained by developers
-- Feel free to make pull requests or Issues
-- The project uses a Quiz mock up service which simulated an HTTP call.
-- (Testing will be implemented soon)
+- Actively maintained by developers.
+- Feel free to make pull requests or Issues.
+- ArtOfCode uses a Quiz mock up service which simulated an HTTP call.
+- ArtOfCode uses the jest testing library.
+- Aria labels & lang attribute implemented.
 
 ## Preview
 <img width="1440" alt="Screenshot 2022-05-18 at 14 40 08" src="https://user-images.githubusercontent.com/43650393/169040901-aa22b448-4e0a-480c-9453-b1e1881ff9ab.png">
