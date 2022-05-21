@@ -3,20 +3,23 @@
   margin-bottom: 5vw;
   font-size: 32px;
 }
-.quizQuestionsOptions {
+.quizQuestionsOptionsButton {
   background-color: #212121;
   color: white;
-  width: 120px;
+  width: 40vw;
 }
 
 .quizMargin {
   margin-left: 20px;
   margin-top: 1.5vw;
 }
-@media (min-width: 600) {
+@media (min-width: 600px) {
   .quizMargin {
-    margin-top: 20px;
-    border: 2px solid red;
+    margin-top: 30px;
+  }
+  .quizQuestionsOptionsButton {
+    width: 20vw;
+    margin-bottom: 20px;
   }
 }
 
