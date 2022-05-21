@@ -22,7 +22,7 @@
         [ngClass]="highlightedAnswer(option)"
         (click)="sendChoosenAnswer(option)"
         lang="en"
-        aria-label="Choose this option Button"
+        [attr.aria-label]="'Choose this option Button ' + option"
       >
         {{ option }}
       </button>
