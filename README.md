@@ -6,7 +6,7 @@ The Art Of Code allows you to test your JS knowledge through a series of quizes.
 - Actively maintained by developers.
 - Feel free to make pull requests or Issues.
 - ArtOfCode uses a Quiz mock up service which simulated an HTTP call.
-- ArtOfCode uses the jest testing library.
+- ArtOfCode uses Jest as it's testing library.
 - Aria labels & lang attribute implemented.
 
 ## Preview
