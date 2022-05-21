@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { QuizResults } from 'src/app/interfaces/quiz-interfaces';
 import { QuizService } from 'src/app/services/main-quiz.service';
 
@@ -10,7 +11,7 @@ import { QuizService } from 'src/app/services/main-quiz.service';
 export class QuizResultsComponent implements OnInit {
   constructor(private readonly quiz: QuizService) {}
 
-  dataSource: any;
+  dataSource: Observable<QuizResults[]>;
   ngOnInit(): void {
     this.dataSource = this.quiz.getQuizTableDataFinal();
   }
