@@ -1,25 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { QuizService } from 'src/app/services/main-quiz.service';
 
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
-    })
-    .compileComponents();
-  });
+  let fixture: HeaderComponent;
+  let QuizService: QuizService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture = new HeaderComponent(QuizService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Clean Current Quiz Instance', () => {
+    it('should clean the current quiz Array of all the values.', () => {
+      const cleanArray = spyOn(fixture, 'clearCurrentQuizinstance');
+
+      fixture.clearCurrentQuizinstance();
+
+      expect(cleanArray);
+    });
   });
 });
